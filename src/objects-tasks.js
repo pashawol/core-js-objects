@@ -251,10 +251,24 @@ function fromJSON(proto, json) {
  *      { country: 'Russia',  city: 'Saint Petersburg' }
  *    ]
  */
-function sortCitiesArray(/* arr */) {
-  throw new Error('Not implemented');
+function sortCitiesArray(arr) {
+  return arr.sort((a, b) => {
+    if (a.country === b.country) {
+      return a.city.localeCompare(b.city);
+    }
+    return a.country.localeCompare(b.country);
+  });
 }
-
+// console.log(
+//   sortCitiesArray([
+//     { country: 'Russia', city: 'Moscow' },
+//     { country: 'Belarus', city: 'Minsk' },
+//     { country: 'Poland', city: 'Warsaw' },
+//     { country: 'Russia', city: 'Saint Petersburg' },
+//     { country: 'Poland', city: 'Krakow' },
+//     { country: 'Belarus', city: 'Brest' },
+//   ])
+// );
 /**
  * Groups elements of the specified array by key.
  * Returns multimap of keys extracted from array elements via keySelector callback
@@ -285,10 +299,30 @@ function sortCitiesArray(/* arr */) {
  *    "Poland" => ["Lodz"]
  *   }
  */
-function group(/* array, keySelector, valueSelector */) {
-  throw new Error('Not implemented');
+function group(array, keySelector, valueSelector) {
+  const map = new Map();
+  array.forEach((item) => {
+    if (!map.get(keySelector(item))) {
+      map.set(keySelector(item), []);
+    }
+    map.get(keySelector(item)).push(valueSelector(item));
+  });
+  return map;
 }
-
+console.log(
+  group(
+    [
+      { country: 'Belarus', city: 'Brest' },
+      { country: 'Russia', city: 'Omsk' },
+      { country: 'Russia', city: 'Samara' },
+      { country: 'Belarus', city: 'Grodno' },
+      { country: 'Belarus', city: 'Minsk' },
+      { country: 'Poland', city: 'Lodz' },
+    ],
+    (item) => item.country,
+    (item) => item.city
+  )
+);
 /**
  * Css selectors builder
  *
