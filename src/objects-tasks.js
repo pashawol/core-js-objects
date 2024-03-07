@@ -309,20 +309,20 @@ function group(array, keySelector, valueSelector) {
   });
   return map;
 }
-console.log(
-  group(
-    [
-      { country: 'Belarus', city: 'Brest' },
-      { country: 'Russia', city: 'Omsk' },
-      { country: 'Russia', city: 'Samara' },
-      { country: 'Belarus', city: 'Grodno' },
-      { country: 'Belarus', city: 'Minsk' },
-      { country: 'Poland', city: 'Lodz' },
-    ],
-    (item) => item.country,
-    (item) => item.city
-  )
-);
+// console.log(
+//   group(
+//     [
+//       { country: 'Belarus', city: 'Brest' },
+//       { country: 'Russia', city: 'Omsk' },
+//       { country: 'Russia', city: 'Samara' },
+//       { country: 'Belarus', city: 'Grodno' },
+//       { country: 'Belarus', city: 'Minsk' },
+//       { country: 'Poland', city: 'Lodz' },
+//     ],
+//     (item) => item.country,
+//     (item) => item.city
+//   )
+// );
 /**
  * Css selectors builder
  *
